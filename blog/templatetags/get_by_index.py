@@ -3,5 +3,5 @@ from django.template import Library
 register = Library()
 
 @register.filter
-def get_slice(value, i):
-  return value[4 * i : 4 * i + 4]
+def get_by_index( value, i):
+  return [value[i]]

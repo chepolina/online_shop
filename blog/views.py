@@ -13,7 +13,8 @@ def shop(request):
     return render(request, "blog/shop.html", {"items": items})
 
 def shopping_cart(request):
-    return render(request, "blog/shopping_cart.html", {})
+    items = Product.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, "blog/shopping_cart.html", {"items": items})
 
 # def product(request):
 #     return render(request, "blog/product.html", {})

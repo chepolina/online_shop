@@ -1,4 +1,8 @@
 {% load staticfiles %}
+{% load get_rows_range %}
+{% load get_slice %}
+{% load get_by_index %}
+
 
 
 <html><head>
@@ -79,37 +83,23 @@
                 <tr>
                   <th>#</th>
                   <th>Product Name</th>
-                  <th>Unite Price</th>
+                  <th>Unit Price</th>
                   <th>Quantity</th>
                   <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
+              {% for item in items|get_by_index:0%}
                 <tr>
-                  <td contenteditable="true">1</td>
-                  <td>Smores bar</td>
-                  <td>5.95$</td>
-                  <td>3</td>
+                  <td >{{ item.id }}</td>
+                  <td> <a href="/product/{{ item.id }}"> {{ item.title }}</a> </td>
+                  <td> {{ item.cost }} $</td>
+                  <td contenteditable="true">3</td>
                   <td>
                     <a href="#"><i class="fa fa-3x fa-fw fa-check-square-o"></i></a>
                   </td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>The presting colection</td>
-                  <td>20$</td>
-                  <td>1</td>
-                  <td>
-                    <a href="#"><i class="fa fa-3x fa-fw fa-check-square-o"></i></a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>The modern collection</td>
-                  <td contenteditable="true">32$</td>
-                  <td>1</td>
-                  <td><a href="#"><i class="fa fa-3x fa-fw fa-check-square-o"></i></a></td>
-                </tr>
+                  {% endfor %}
               </tbody>
             </table>
           </div>
