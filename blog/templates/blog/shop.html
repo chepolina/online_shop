@@ -92,7 +92,7 @@
                     <div class="row">
                         {% for item in items|get_slice:i %}
                             <div class="col-md-3">
-                                <a href="/product">
+                                <a href="/product/{{ item.id }}">
                                 <img src="{{ item.image.url }}" class="img-responsive img-thumbnail">
                                 <h2>{{ item.title }}</h2>
                                 </a>

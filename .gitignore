@@ -2,4 +2,5 @@ env
 .idea
 .DS_Store
 db.sqlite3
-
+*.pyc
+*.py~

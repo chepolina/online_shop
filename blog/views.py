@@ -1,8 +1,7 @@
-from django.shortcuts import render
-from django.utils import timezone
-from django.views.generic import TemplateView
-from .models import Product
 from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404
+from django.utils import timezone
+from .models import Product
 
 
 # Create your views here.
@@ -16,8 +15,8 @@ def shop(request):
 def shopping_cart(request):
     return render(request, "blog/shopping_cart.html", {})
 
-def product(request):
-    return render(request, "blog/product.html", {})
+# def product(request):
+#     return render(request, "blog/product.html", {})
 
 def gift_card(request):
     return render(request, "blog/gift_card.html", {})
@@ -27,6 +26,10 @@ def check_out(request):
 
 def add(request):
     return HttpResponse("Added")
+
+def detail(request, product_id):
+    item = get_object_or_404(Product, pk=product_id)
+    return render(request, 'blog/product.html', {'item': item})
 
 
 # class ProductView(TemplateView):

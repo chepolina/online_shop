@@ -12,6 +12,7 @@ class Product(models.Model):
     published_date = models.DateTimeField(
             blank=True, null=True)
     cost = models.IntegerField()
+    weight = models.FloatField(0.0)
     image = models.ImageField(upload_to="%Y/%m/%d/", height_field=None, width_field=None, max_length=100)
 
     def publish(self):

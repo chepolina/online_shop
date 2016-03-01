@@ -38,49 +38,42 @@
         </div>
     </div>
     <div class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <a href="#">
-                        <img src="images/2.jpg" class="img-responsive">
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <p></p>
-                    <div>
-                        The aptly named Candyland Bar is loaded to the gills with surprises. Every centimeter of rich milk chocolate is packed with a variety of treats. From bite to bite you could either get the solid crunch of candy-coated chocolate candies, or the chewy goodness of the gummy bear. If you want to keep your mouth guessing, if you want a magical variety of flavors and textures, if you’re just plain bored with soulless, pedestrian, mass produced sugar sadness grab a Candyland Bar and love your candy all over again!
-                    </div>
-                    <div>&nbsp;</div>
-                    <div>Belgian Milk Chocolate</div>
-                    <div>
-                        <br></div>
-                    <div>3.5oz (100g)</div>
-                    <div>
-                        <br></div>
-                    <div>Gummi Bears</div>
-                    <div>
-                        Chocolate CandyThe aptly named Candyland Bar is loaded to the gills with surprises. Every centimeter of rich milk chocolate is packed with a variety of treats. From bite to bite you could either get the solid crunch of candy-coated chocolate candies, or the chewy goodness of the gummy bear. If you want to keep your mouth guessing, if you want a magical variety of flavors and textures, if you’re just plain bored with soulless, pedestrian, mass produced sugar sadness grab a Candyland Bar and love your candy all over again!
- 
-                        Belgian Milk Chocolate
-
-                        3.5oz (100g)
-
-                        Gummi Bears
-                        Chocolate Candy
-                    </div>
-                    <p></p>
-                </div>
-            </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="text-center">{{item.title}}</h1>
+          </div>
         </div>
+      </div>
     </div>
     <div class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <a class="btn btn-lg btn-success" contenteditable="true">Add to card</a>
-                </div>
-            </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <a href="#">
+                        <img src="{{ item.image.url }}" class="img-responsive img-thumbnail">
+                    </a>
+            <h1 contenteditable="true" class="text-center">{{item.cost}}$</h1>
+          </div>
+          <div class="col-md-6">
+            <p class="text-center" contenteditable="true">{{item.description}}</p>
+          </div>
+
+          <div class="col-md-6">
+            <p class="text-center" contenteditable="true">{{item.weight}}gramm</p>
+          </div>
         </div>
+      </div>
     </div>
-</body>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <a class="btn btn-lg btn-success" contenteditable="true">Add to card</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
 </html>
