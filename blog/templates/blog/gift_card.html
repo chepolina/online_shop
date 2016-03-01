@@ -1,0 +1,88 @@
+{% load staticfiles %}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="static/css/main.css" rel="stylesheet" type="text/css"></head>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+<body>
+
+
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="/index" class="btn btn-lg btn-warning">Home</a>
+                </div>
+                <div class="col-md-2">
+                    <a href="/check_out" class="btn btn-lg btn-warning">Check out</a>
+                </div>
+                <div class="col-md-4">
+                    <a href="/shop" class="btn btn-lg btn-warning">Chocolate shop</a>
+                </div>
+                <div class="col-md-2">
+                    <a href="/gift_card" class="btn btn-lg btn-warning">Gift card</a>
+                </div>
+                <div class="col-md-2">
+                    <a href="/shopping_cart" class="btn btn-lg btn-warning">
+                        <span class="badge">5</span>
+                        Shopping cart
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="/static/images/gift_cert_page_image.jpg" class="img-responsive"></div>
+                <div class="col-md-6">
+                    <p></p>
+                    <div>
+                        Whether you're celebrating an occasion with a close friend or simply doing something nice for an acquaintance, Chocomize Gift Certificates are a fun &amp; convenient way to leave a lasting impression.
+                    </div>
+                    <br>
+                    <br>
+                    <div>
+                        You have 2 options for delivering the Chocomize e-gift certificate:
+                    </div>
+                    <br>
+                    <br>
+                    <div>1. Send to a friend via email</div>
+                    <div>
+                        Check "Send Gift Card to Friend" box above, and then enter your recipient's name, email address, message and e-delivery date in the drop-down box. Your friend will receive an email from Chocomize with the code to redeem the gift certificate.
+                    </div>
+                    <br>
+                    <br>
+                    <div>2. Send to yourself via email</div>
+                    <div>
+                        You will receive an email from Chocomize with the e-gift certificate to save for later or print to give in person.
+                    </div>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="btn-group btn-group-justified btn-group-lg" data-toggle="buttons">
+                        <a href="#" class="btn btn-danger">50$</a>
+                        <a href="#" class="btn btn-danger">100$</a>
+                        <a href="#" class="btn btn-danger">200$</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <a class="btn btn-lg btn-success">Add to cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

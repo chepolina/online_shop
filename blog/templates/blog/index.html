@@ -1,0 +1,233 @@
+{% load staticfiles %}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="static/css/main.css" rel="stylesheet" type="text/css"></head>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+<body>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="/index" class="btn btn-lg btn-warning">Home</a>
+                </div>
+                <div class="col-md-2">
+                    <a href="/check_out" class="btn btn-lg btn-warning">Check out</a>
+                </div>
+                <div class="col-md-4">
+                    <a href="/shop" class="btn btn-lg btn-warning">Chocolate shop</a>
+                </div>
+                <div class="col-md-2">
+                    <a href="/gift_card" class="btn btn-lg btn-warning">Gift card</a>
+                </div>
+                <div class="col-md-2">
+                    <a href="/shopping_cart" class="btn btn-lg btn-warning">
+                        <span class="badge">5</span>
+                        Shopping cart
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cover">
+        <div class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                    <ul class="nav navbar-nav navbar-right"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="cover-image" style="background-image : url('/static/images/smores2_640x474.jpg')"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1 class="hidden-xs text-center text-warning" contenteditable="true">CHOCOMIZE</h1>
+                    <br>
+                    <br></div>
+            </div>
+        </div>
+    </div>
+    <div class="carousel hidden-lg hidden-md hidden-sm hidden-xs slide" id="fullcarousel-example" data-interval="5001" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="/static/images/smores2_640x474.jpg">
+                <div class="carousel-caption"></div>
+            </div>
+            <h2>Title</h2>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1 class="text-center text-primary">About us</h1>
+                    <p class="lead text-left"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>
+                        <span style="color: rgb(27, 26, 25); font-family: Arial, Helvetica, sans-serif; line-height: 17px; text-align: justify; background-color: rgb(250, 250, 250);">
+                            Make your own chocolate bars with Chocomize. Chocomize is a fun and innovative
+                                chocolate company that has fast become a favorite of chocolate addicts
+                                around the world. The online creation station allows you to build your
+                                perfect chocolate bar or chocolate heart with your favorite ingredients.
+                                Choose from our premium Belgian dark chocolate, milk chocolate, or white
+                                chocolate. Then, personalize your chocolate bars by adding up to five toppings
+                                from a selection of over 100 ingredients. Make chocolate just the way you
+                                like it and with our endless&nbsp;possibilities each masterpiece will be
+                                uniquely your own!
+                        </span>
+                        Make your own chocolate bars with Chocomize. Chocomize
+                            is a fun and innovative chocolate company that has fast become a favorite
+                            of chocolate addicts around the world. The online creation station allows
+                            you to build your perfect chocolate bar or chocolate heart with your favorite
+                            ingredients. Choose from our premium Belgian dark chocolate, milk chocolate,
+                            or white chocolate. Then, personalize your chocolate bars by adding up
+                            to five toppings from a selection of over 100 ingredients. Make chocolate
+                            just the way you like it and with our endless possibilities each masterpiece
+                            will be uniquely your own!
+                        <br>
+                        <br>
+                        <span style="color: rgb(27, 26, 25); font-family: Arial, Helvetica, sans-serif; line-height: 17px; text-align: justify; background-color: rgb(250, 250, 250);">
+                            Chocomize empowers customers to create chocolate bars no matter how unusual.
+                                Make a candy bar that you won't find in any store or create one as a gift
+                                for that special someone. With toppings ranging from the usual nuts and
+                                fruits to the not-so-common 23 karat gold flakes, bacon, and even violet
+                                petals your customized chocolate is sure to leave a memorable impression.
+                                Made with finest Belgian chocolate, each bar is handcrafted by our expert
+                                chocolatiers. “Chocomizing” is all about chocolate that is different and
+                                unique.
+                        </span>
+                        Chocomize empowers customers to create chocolate bars no
+                            matter how unusual. Make a candy bar that you won't find in any store or
+                            create one as a gift for that special someone. With toppings ranging from
+                            the usual nuts and fruits to the not-so-common 23 karat gold flakes, bacon,
+                            and even violet petals your customized chocolate is sure to leave a memorable
+                            impression. Made with finest Belgian chocolate, each bar is handcrafted
+                            by our expert chocolatiers. “Chocomizing” is all about chocolate that is
+                            different and unique.
+                        <br>
+                        <br>
+                        <span style="color: rgb(27, 26, 25); font-family: Arial, Helvetica, sans-serif; line-height: 17px; text-align: justify; background-color: rgb(250, 250, 250);">
+                            Our bars also make memorable gifts for any special occasion. Explore our
+                                premium chocolate gift sets or discover our corporate chocolate gifts,
+                                wedding favors, and party favors. When you order in bulk you can benefit
+                                from additional customization options. You can add an edible plaque to
+                                the chocolate bars that can have your full-color company logo, wedding
+                                dates, or picture printed on it. Moreover, the packaging can be customized
+                                with your corporate or wedding design. You can also send a Chocomize gift
+                                card right to someone’s inbox as a gift, allowing them to create their
+                                own custom chocolate bar! Chocomize gift cards make the perfect last minute
+                                gift.
+                        </span>
+                        Our bars also make memorable gifts for any special occasion.
+                            Explore our premium chocolate gift sets or discover our corporate chocolate
+                            gifts, wedding favors, and party favors. When you order in bulk you can
+                            benefit from additional customization options. You can add an edible plaque
+                            to the chocolate bars that can have your full-color company logo, wedding
+                            dates, or picture printed on it. Moreover, the packaging can be customized
+                            with your corporate or wedding design. You can also send a Chocomize gift
+                            card right to someone’s inbox as a gift, allowing them to create their
+                            own custom chocolate bar! Chocomize gift cards make the perfect last minute
+                            gift.
+                        <br>
+                        <br>
+                        <span style="color: rgb(27, 26, 25); font-family: Arial, Helvetica, sans-serif; line-height: 17px; text-align: justify; background-color: rgb(250, 250, 250);">
+                            The Chocomize Creation Station allows you to create candy bars 24 hours
+                                a day from the comfort of your home or office and even place orders with
+                                your smartphone - easy, secure, and fast. If you feel unsure about which
+                                chocolate ingredients you want to select for your personalized chocolate
+                                bar, you can find inspiration in our "Chocolate Shop". The "Chocolate Shop"
+                                lists our most popular chocolate bars, hot chocolate on a spoon, and chocolate
+                                gift sets. It’s chocolate just the way you like it!
+                        </span>
+                        The Chocomize
+                            Creation Station allows you to create candy bars 24 hours a day from the
+                            comfort of your home or office and even place orders with your smartphone
+                            - easy, secure, and fast. If you feel unsure about which chocolate ingredients
+                            you want to select for your personalized chocolate bar, you can find inspiration
+                            in our "Chocolate Shop". The "Chocolate Shop" lists our most popular chocolate
+                            bars, hot chocolate on a spoon, and chocolate gift sets. It’s chocolate
+                            just the way you like it!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-center text-primary">POPULAR</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="/static/images/1.jpg" class="center-block img-circle img-responsive">
+                    <h3 class="text-center">love bar</h3>
+                    <p class="text-center">5.5$</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="/static/images/mothers-day-heart_1.jpg" class="center-block img-circle img-responsive">
+                    <h3 class="text-center">mother's present</h3>
+                    <p class="text-center">20$</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="/static/images/couch-potato.jpg" class="center-block img-circle img-responsive">
+                    <h3 class="text-center">banana bar</h3>
+                    <p class="text-center">7.5$</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="#"> <i class="fa fa-5x text-primary fa-automobile"></i>
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <p></p>
+                    <h3 style="margin: 0px; padding: 0px; font-size: 30px; line-height: 35px; font-family: populairemedium; color: rgb(115, 115, 115); background-color: rgb(247, 247, 246);">
+                        Flat Rate Shipping - Only $5.95 per order Orders &gt; $40 ship free!
+                    </h3>
+                    <p></p>
+                </div>
+                <div class="col-md-3"></div>
+                <div class="col-md-1">
+                    <a href="#"> <i class="fa fa-5x fa-mobile"></i>
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <p></p>
+                    <h3 style="margin: 0px; padding: 0px; font-size: 30px; line-height: 35px; font-family: populairemedium; color: rgb(115, 115, 115); background-color: rgb(247, 247, 246);">
+                        Need help? Call toll-free:
+                        <span style="margin: 0px 0px 0px 10px; padding: 0px; color: rgb(86, 50, 17);">800-621-3294</span>
+                    </h3>
+                    <h3 style="margin: 0px; padding: 0px; font-size: 30px; line-height: 35px; font-family: populairemedium; color: rgb(115, 115, 115); background-color: rgb(247, 247, 246);">
+                        or drop us an email:
+                        <span style="margin: 0px 0px 0px 10px; padding: 0px; color: rgb(86, 50, 17);">info@chocomize.com</span>
+                    </h3>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
