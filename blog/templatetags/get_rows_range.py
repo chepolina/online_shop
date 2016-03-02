@@ -5,4 +5,7 @@ register = Library()
 
 @register.filter
 def get_rows_range( value ):
-  return range( ceil(len(value) / 4) )
+  if len(value) != 0:
+    return range( ceil(len(value) / 4) )
+  else:
+    return range(0)

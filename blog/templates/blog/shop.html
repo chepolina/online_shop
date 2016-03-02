@@ -1,6 +1,7 @@
 {% load staticfiles %}
 {% load get_rows_range %}
 {% load get_slice %}
+{% load count_category %}
 
 
 <html>
@@ -61,23 +62,23 @@
                     <ul class="list-group">
                         <li class="list-group-item">
                             popular chocolate bar
-                            <span class="badge">11</span>
+                            <span class="badge">{{ items|count_category:"popular chocolate bar" }}</span>
                         </li>
                         <li class="list-group-item">
                             hot chocolate on a spoon
-                            <span class="badge">7</span>
+                            <span class="badge">{{ items|count_category:"hot chocolate on a spoon" }}</span>
                         </li>
                         <li class="list-group-item">
                             chocolate sets
-                            <span class="badge">15</span>
+                            <span class="badge">{{ items|count_category:"chocolate sets" }}</span>
                         </li>
                         <li class="list-group-item">
-                            buisiness gifts
-                            <span class="badge">8</span>
+                            business gifts
+                            <span class="badge">{{ items|count_category:"business gifts" }}</span>
                         </li>
                         <li class="list-group-item">
                             luxury truffles
-                            <span class="badge">5</span>
+                            <span class="badge">{{ items|count_category:"luxury truffles" }}</span>
                         </li>
                     </ul>
                 </div>
