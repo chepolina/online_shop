@@ -1,4 +1,4 @@
-#from django.http import HttpResponses
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from .models import Product
@@ -29,3 +29,8 @@ def add(request):
 def detail(request, product_id):
     item = get_object_or_404(Product, pk=product_id)
     return render(request, 'blog/product.html', {'item': item})
+
+def show_category(request, category):
+    items = Product.objects.filter(category=category)
+    print(category)
+    return render(request, 'blog/shop.html', {'items': items})
