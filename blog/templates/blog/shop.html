@@ -2,6 +2,7 @@
 {% load get_rows_range %}
 {% load get_slice %}
 {% load count_category %}
+{% load get_category %}
 
 
 <html>
@@ -60,36 +61,14 @@
             <div class="row">
                 <div class="col-md-4">
                     <ul class="list-group">
-                        <a href="/shop/popular chocolate bar">
+                        {% for item in items|get_category %}
+                        <a href="/shop/{{ item }}">
                             <li class="list-group-item">
-                            popular chocolate bar
-                            <span class="badge">{{ items|count_category:"popular chocolate bar" }}</span>
+                            {{ item }}
+                            <span class="badge">{{ items|count_category:item }}</span>
                             </li>
                         </a>
-                        <a href="/shop/hot chocolate on a spoon">
-                            <li class="list-group-item">
-                            hot chocolate on a spoon
-                            <span class="badge">{{ items|count_category:"hot chocolate on a spoon" }}</span>
-                            </li>
-                        </a>
-                        <a href="/shop/chocolate sets">
-                            <li class="list-group-item">
-                            chocolate sets
-                            <span class="badge">{{ items|count_category:"chocolate sets" }}</span>
-                            </li>
-                        </a>
-                        <a href="/shop/business gifts">
-                            <li class="list-group-item">
-                            business gifts
-                            <span class="badge">{{ items|count_category:"business gifts" }}</span>
-                            </li>
-                        </a>
-                        <a href="/shop/luxury truffles">
-                            <li class="list-group-item">
-                            luxury truffles
-                            <span class="badge">{{ items|count_category:"luxury truffles" }}</span>
-                            </li>
-                        </a>
+                        {% endfor %}
                     </ul>
                 </div>
                 <div class="col-md-8">
