@@ -1,6 +1,8 @@
 env
 .idea
 .DS_Store
-db.sqlite3
 *.pyc
 *.py~
+*local_settings.py
+__pycache__
+db.sqlite3
