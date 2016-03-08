@@ -38,7 +38,12 @@ INSTALLED_APPS = (
                   'django.contrib.messages',
                   'django.contrib.staticfiles',
                   'blog',
+                  'social.apps.django_app.default',
                   )
+AUTHENTICATION_BACKENDS = (
+    'social.backends.vk.VKOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 MIDDLEWARE_CLASSES = (
                       'django.contrib.sessions.middleware.SessionMiddleware',
@@ -64,6 +69,8 @@ TEMPLATES = [
                                     'django.template.context_processors.request',
                                     'django.contrib.auth.context_processors.auth',
                                     'django.contrib.messages.context_processors.messages',
+                                    'social.apps.django_app.context_processors.backends',
+                                    'social.apps.django_app.context_processors.login_redirect'
                                     ],
              },
              },
@@ -101,6 +108,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+from .local_settings import *
 
 STATICFILES_FINDERS = ( 
                        'django.contrib.staticfiles.finders.FileSystemFinder',
