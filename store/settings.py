@@ -108,6 +108,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 from .local_settings import *
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL='/media/'
+STATIC_ROOT = os.path.join(BASE_DIR, '/static')
+MEDIA_ROOT = os.path.join(BASE_DIR, '/blog/uploads')
+MEDIA_URL = '/media/'
