@@ -15,6 +15,6 @@ urlpatterns = [
     url(r'^accounts/logout/$', views.account_logout, name='logout'),
     url(r'^accounts/login/$', views.home, name='login'),
     url(r'^accounts/profile/$', views.account_profile, name='profile'),
-    url(r'^$', views.home, name='home'),
+    url(r'^$', views.home, name='home')
     #url(r"^item/(?P<slug>.*)", ProductView.as_view(), name='item'),
 ]

@@ -42,6 +42,7 @@ INSTALLED_APPS = (
                   )
 AUTHENTICATION_BACKENDS = (
     'social.backends.vk.VKOAuth2',
+    'social.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
 
