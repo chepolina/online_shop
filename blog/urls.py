@@ -13,7 +13,9 @@ urlpatterns = [
     url(r'^product/(?P<product_id>[0-9]+)/$', views.detail, name='detail'),
     url(r'^shop/(?P<category>[a-z\s]+)/$', views.show_category, name='show_category'),
     url(r'^accounts/logout/$', views.account_logout, name='logout'),
-    url(r'^accounts/login/$', views.home, name='login'),
+    url(r'^accounts/login/vk/$', views.home, name='login'),
+    url(r'^accounts/login/fb/$', views.homefb, name='login'),
     url(r'^accounts/profile/$', views.account_profile, name='profile'),
-    url(r'^$', views.home, name='home'),
+    url(r'^payment/cart/$', views.paypal_pay, name='cart'),
+    url(r'^payment/success/$', views.paypal_success, name='success'),
 ]

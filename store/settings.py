@@ -39,6 +39,7 @@ INSTALLED_APPS = (
                   'django.contrib.staticfiles',
                   'blog',
                   'social.apps.django_app.default',
+                  'paypal.standard.ipn',
                   )
 AUTHENTICATION_BACKENDS = (
     'social.backends.vk.VKOAuth2',
@@ -63,6 +64,7 @@ TEMPLATES = [
              {
              'BACKEND': 'django.template.backends.django.DjangoTemplates',
              'DIRS': [],
+             'DIRS': [os.path.join(BASE_DIR, 'templates'), ],
              'APP_DIRS': True,
              'OPTIONS': {
              'context_processors': [
@@ -107,9 +109,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
-# from .local_settings import *
-STATIC_ROOT = ''
-STATICFILES_DIRS = ( os.path.join('static'), )
+from .local_settings import *
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '/blog/uploads')
 MEDIA_URL = '/media/'

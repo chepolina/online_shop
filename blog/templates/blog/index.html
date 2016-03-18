@@ -264,14 +264,15 @@
     <div class="section">
       <div class="container">
         <div class="row text-center">
+        <!--<div><a href="/accounts/login">login</a></div>-->
           <div class="col-xs-3 text-center">
             <a><i class="fa fa-5x fa-fw fa-vk"></i></a>
             <div id="vk_auth"></div>
-            <a href="{% url 'social:begin' 'vk-oauth2' %}?next={{ request.path }}">Login with VK</a>
+            <a href="/accounts/login/vk/">Login with VK</a>
           </div>
           <div class="col-xs-3">
             <a><i class="fa fa-5x fa-fw fa-facebook"></i></a>
-            <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>
+            <a href="/accounts/login/fb/">Login with Facebook</a>
           </div>
             <div id="status">
             </div>
