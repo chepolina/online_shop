@@ -16,6 +16,6 @@ urlpatterns = [
     url(r'^accounts/login/vk/$', views.home, name='login'),
     url(r'^accounts/login/fb/$', views.homefb, name='login'),
     url(r'^accounts/profile/$', views.account_profile, name='profile'),
-    url(r'^payment/cart/$', views.paypal_pay, name='cart'),
+    # url(r'^payment/cart/$', views.paypal_pay, name='cart'),
     url(r'^payment/success/$', views.paypal_success, name='success'),
 ]
