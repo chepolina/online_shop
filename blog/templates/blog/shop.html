@@ -1,22 +1,14 @@
+{% extends "blog/base.html" %}
 {% load staticfiles %}
 {% load get_rows_range %}
 {% load get_slice %}
 {% load count_category %}
 {% load get_category %}
-
-
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="static/css/main.css" rel="stylesheet" type="text/css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-</head>
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-<body>
+{% load format %}
+{% block head %}
+    <title>product</title>
+{% endblock %}
+{% block body %}
     <script>
         $(document).ready(function(){
         $( "button.add" ).click(function(){
@@ -35,30 +27,6 @@
     <div class="section">
         <div class="container">
             <div class="row">
-                <div class="col-md-2">
-                    <a href="/index" class="btn btn-lg btn-warning">Home</a>
-                </div>
-                <div class="col-md-2">
-                    <a href="/check_out" class="btn btn-lg btn-warning">Check out</a>
-                </div>
-                <div class="col-md-4">
-                    <a href="/shop" class="btn btn-lg btn-warning">Chocolate shop</a>
-                </div>
-                <div class="col-md-2">
-                    <a href="/gift_card" class="btn btn-lg btn-warning">Gift card</a>
-                </div>
-                <div class="col-md-2">
-                    <a href="/shopping_cart" class="btn btn-lg btn-warning">
-                        <span class="badge">5</span>
-                        Shopping cart
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="section">
-        <div class="container">
-            <div class="row">
                 <div class="col-md-4">
                     <ul class="list-group">
                         {% for item in items|get_category %}
@@ -72,7 +40,7 @@
                     </ul>
                 </div>
                 <div class="col-md-8">
-                    <img src="/static/images/variety_of_artisanal_chocolate_pralines_postcard-r69eb08f39cd448098340bafe7c935921_vgbaq_8byvr_324.jpg" class="center-block img-responsive img-thumbnail"></div>
+                    <img src="/static/images/variety_of_artisanal_chocolate_pralines_postcard-r69eb08f39cd448098340bafe7c935921_vgbaq_8byvr_324.jpg" class="center-block img-responsive img-thumbnail" alt="img"></div>
             </div>
         </div>
     </div>
@@ -82,8 +50,8 @@
                     <div class="row">
                         {% for item in items|get_slice:i %}
                             <div class="col-md-3">
-                                <a href="/product/{{ item.id }}">
-                                <img src="{{ item.image.url }}" class="img-responsive img-thumbnail">
+                                <a href="/product/{{ item.title|format }}">
+                                <img src="{{ item.image.url }}" class="img-responsive img-thumbnail" alt="img">
                                 <h2>{{ item.title }}</h2>
                                 </a>
                                 <button id="item{{ item.id }}" class="add">
@@ -94,5 +62,4 @@
                 </div>
             </div>
     {% endfor %}
-</body>
-</html>
+{% endblock %}

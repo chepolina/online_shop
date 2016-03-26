@@ -1,44 +1,12 @@
+{% extends "blog/base.html" %}
 {% load staticfiles %}
 {% load get_rows_range %}
 {% load get_slice %}
 {% load get_by_index %}
-
-
-
-<html><head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="static/css/main.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-  </head>
-  <body>
-    <div class="section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-2">
-            <a href="/index" class="btn btn-lg btn-warning">Home</a>
-          </div>
-          <div class="col-md-2">
-            <a href="/check_out" class="btn btn-lg btn-warning">Check out</a>
-          </div>
-          <div class="col-md-4">
-            <a href="/shop" class="btn btn-lg btn-warning">Chocolate shop</a>
-          </div>
-          <div class="col-md-2">
-            <a href="/gift_card" class="btn btn-lg btn-warning">Gift card</a>
-          </div>
-          <div class="col-md-2">
-            <a href="/shopping_cart" class="btn btn-lg btn-warning">
-                        <span class="badge">5</span>
-                        Shopping cart
-                    </a>
-          </div>
-        </div>
-      </div>
-    </div>
+{% block head %}
+    <title>shopping_cart</title>
+{% endblock %}
+{% block body %}
     <div class="section text-right">
       <div class="container">
         <div class="row">
@@ -113,13 +81,6 @@
           <div class="col-md-3"></div>
           <div class="col-md-3"></div>
           <div class="col-md-3"></div>
-
-          <!--<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">-->
-          <!--  <input type="hidden" name="cmd" value="_s-xclick">-->
-          <!--  <input type="hidden" name="hosted_button_id" value="J43AY7YVTWPNL">-->
-          <!--  <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">-->
-          <!--  <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">-->
-          <!--</form>-->
           <h3>You are to pay:</h3>
  <p>{{ paypal_dict.amount }} {{ paypal_dict.currency_code }}</p>
  <p>Invoice: {{ paypal_dict.invoice }}</p>
@@ -129,6 +90,4 @@
         </div>
       </div>
     </div>
-
-
-</body></html>
+{% endblock %}

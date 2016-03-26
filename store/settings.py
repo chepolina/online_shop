@@ -112,5 +112,5 @@ USE_TZ = True
 from .local_settings import *
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '/blog/uploads')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'blog/uploads')
 MEDIA_URL = '/media/'

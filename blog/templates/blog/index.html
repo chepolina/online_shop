@@ -1,20 +1,14 @@
-{% load staticfiles %}
+{% extends "blog/base.html" %}
+{% block head %}
+    <title>index</title>
+    <script type="text/javascript" src="vk.com/js/api/openapi.js?121"></script>
 
-<html>
-<head>
-    <script type="text/javascript" src="//vk.com/js/api/openapi.js?121"></script>
+    <script type="text/javascript">
+        VK.init({apiId: 5341407});
+    </script>
+{% endblock %}
 
-<script type="text/javascript">
-  VK.init({apiId: 5341407});
-</script>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="/static/css/main.css" rel="stylesheet" type="text/css"></head>
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-<body>
+{% block body %}
     <script>
         window.fbAsyncInit = function() {
         FB.init({
@@ -31,7 +25,6 @@
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
     </script>
-    <div id="fb-root"></div>
     <script>(function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
@@ -43,31 +36,8 @@
 
 
 
-    <div class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-2">
-                    <a href="/index" class="btn btn-lg btn-warning">Home</a>
-                </div>
-                <div class="col-md-2">
-                    <a href="/check_out" class="btn btn-lg btn-warning">Check out</a>
-                </div>
-                <div class="col-md-4">
-                    <a href="/shop" class="btn btn-lg btn-warning">Chocolate shop</a>
-                </div>
-                <div class="col-md-2">
-                    <a href="/gift_card" class="btn btn-lg btn-warning">Gift card</a>
-                </div>
-                <div class="col-md-2">
-                    <a href="/shopping_cart" class="btn btn-lg btn-warning">
-                        <span class="badge">5</span>
-                        Shopping cart
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="cover">
+
+<div class="cover">
         <div class="navbar navbar-default">
             <div class="container">
                 <div class="navbar-header">
@@ -96,7 +66,7 @@
     <div class="carousel hidden-lg hidden-md hidden-sm hidden-xs slide" id="fullcarousel-example" data-interval="5001" data-ride="carousel">
         <div class="carousel-inner">
             <div class="item active">
-                <img src="/static/images/smores2_640x474.jpg">
+                <img src="/static/images/smores2_640x474.jpg" alt="img">
                 <div class="carousel-caption"></div>
             </div>
             <h2>Title</h2>
@@ -210,17 +180,17 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <img src="/static/images/1.jpg" class="center-block img-circle img-responsive">
+                    <img src="/static/images/1.jpg" class="center-block img-circle img-responsive" alt="img">
                     <h3 class="text-center">love bar</h3>
                     <p class="text-center">5.5$</p>
                 </div>
                 <div class="col-md-4">
-                    <img src="/static/images/mothers-day-heart_1.jpg" class="center-block img-circle img-responsive">
+                    <img src="/static/images/mothers-day-heart_1.jpg" class="center-block img-circle img-responsive" alt="img">
                     <h3 class="text-center">mother's present</h3>
                     <p class="text-center">20$</p>
                 </div>
                 <div class="col-md-4">
-                    <img src="/static/images/couch-potato.jpg" class="center-block img-circle img-responsive">
+                    <img src="/static/images/couch-potato.jpg" class="center-block img-circle img-responsive" alt="img">
                     <h3 class="text-center">banana bar</h3>
                     <p class="text-center">7.5$</p>
                 </div>
@@ -264,11 +234,10 @@
     <div class="section">
       <div class="container">
         <div class="row text-center">
-        <!--<div><a href="/accounts/login">login</a></div>-->
           <div class="col-xs-3 text-center">
             <a><i class="fa fa-5x fa-fw fa-vk"></i></a>
             <div id="vk_auth"></div>
-            <a href="/accounts/login/vk/">Login with VK</a>
+            <a href="/accounts/login/">Login with VK</a>
           </div>
           <div class="col-xs-3">
             <a><i class="fa fa-5x fa-fw fa-facebook"></i></a>
@@ -279,6 +248,6 @@
         </div>
       </div>
     </div>
+{% endblock %}
 
-</body>
-</html>
+

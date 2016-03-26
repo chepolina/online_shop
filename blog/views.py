@@ -27,29 +27,6 @@ def paypal_success(request):
      return HttpResponse("Money is mine. Thanks.")
 
 
-# @login_required
-# def paypal_pay(request):
-#     """
-#     Page where we ask user to pay with paypal.
-#     """
-#     paypal_dict = {
-#         "business": "chepolina-facilitator@gmail.com",
-#         "amount": "100.00",
-#         "currency_code": "RUB",
-#         "item_name": "products in socshop",
-#         "invoice": "INV-00001",
-#         "notify_url": reverse('paypal-ipn'),
-#         "return_url": "http://chepolina.pythonanywhere.com/payment/success/",
-#         "cancel_return": "http://chepolina.pythonanywhere.com/payment/cart/",
-#         "custom": str(request.user.id)
-#     }
-
-#     # Create the instance.
-#     form = PayPalPaymentsForm(initial=paypal_dict)
-#     items = Product.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-#     context = {"form": form, "paypal_dict": paypal_dict, "items": items}
-#     return render(request, "blog/shopping_cart.html", context)
-
 def homefb(request):
     """
     Home page with auth links.
@@ -122,5 +99,4 @@ def detail(request, product_id):
 
 def show_category(request, category):
     items = Product.objects.filter(category=category)
-    print(category)
     return render(request, 'blog/shop.html', {'items': items})
