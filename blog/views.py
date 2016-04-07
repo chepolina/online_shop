@@ -93,10 +93,10 @@ def check_out(request):
 def add(request):
     return HttpResponse("Added")
 
-def detail(request, product_id):
-    item = get_object_or_404(Product, pk=product_id)
+def detail(request, product_title):
+    item = get_object_or_404(Product, title__iexact=product_title.replace("-", " "))
     return render(request, 'blog/product.html', {'item': item})
 
 def show_category(request, category):
-    items = Product.objects.filter(category=category)
+    items = Product.objects.filter(category=category.replace("-", " "))
     return render(request, 'blog/shop.html', {'items': items})

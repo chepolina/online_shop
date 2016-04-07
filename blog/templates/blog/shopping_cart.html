@@ -3,6 +3,7 @@
 {% load get_rows_range %}
 {% load get_slice %}
 {% load get_by_index %}
+{% load format %}
 {% block head %}
     <title>shopping_cart</title>
 {% endblock %}
@@ -57,10 +58,10 @@
                 </tr>
               </thead>
               <tbody>
-              {% for item in items|get_by_index:0%}
+              {% for item in items|get_by_index:0 %}
                 <tr>
                   <td >{{ item.id }}</td>
-                  <td> <a href="/product/{{ item.id }}"> {{ item.title }}</a> </td>
+                  <td> <a href="/product/{{ item.title|format }}"> {{ item.title }}</a> </td>
                   <td> {{ item.cost }} $</td>
                   <td contenteditable="true">3</td>
                   <td>
