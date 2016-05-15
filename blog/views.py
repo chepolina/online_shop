@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
-from .models import Product
+from .models import Product, Category
 from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.contrib.auth import logout
@@ -58,7 +58,8 @@ def index(request):
 
 def shop(request):
     items = Product.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, "blog/shop.html", {"items": items})
+    categories = Category.objects.all()
+    return render(request, "blog/shop.html", {"items": items, "categories":categories})
 
 @login_required
 def shopping_cart(request):
@@ -98,5 +99,6 @@ def detail(request, product_title):
     return render(request, 'blog/product.html', {'item': item})
 
 def show_category(request, category):
-    items = Product.objects.filter(category=category.replace("-", " "))
-    return render(request, 'blog/shop.html', {'items': items})
+    items = list(Product.objects.filter(category__name=category.replace("-", " ")))
+    categories = Category.objects.all()
+    return render(request, 'blog/shop.html', {'items': items, 'categories': categories})

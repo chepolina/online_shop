@@ -1,9 +1,9 @@
 from django.template import Library
-from blog.models import Product
+from blog.models import Product, Category
 
 register = Library()
 
 @register.filter
-def count_category( value, category):
-  items = Product.objects.filter(category=category)
+def count_category( value ):
+  items = Product.objects.filter(category__name=value.name)
   return(len(items))

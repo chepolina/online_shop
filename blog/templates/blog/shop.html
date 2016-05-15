@@ -3,7 +3,6 @@
 {% load get_rows_range %}
 {% load get_slice %}
 {% load count_category %}
-{% load get_category %}
 {% load format %}
 {% block head %}
     <title>product</title>
@@ -29,11 +28,11 @@
             <div class="row">
                 <div class="col-md-4">
                     <ul class="list-group">
-                        {% for item in items|get_category %}
-                        <a href="/shop/{{ item|format }}">
+                        {% for item in categories %}
+                        <a href="/shop/{{ item.name|format }}">
                             <li class="list-group-item">
-                            {{ item }}
-                            <span class="badge">{{ items|count_category:item }}</span>
+                            {{ item.name }}
+                            <span class="badge">{{ item|count_category }}</span>
                             </li>
                         </a>
                         {% endfor %}
