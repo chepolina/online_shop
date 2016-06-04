@@ -8,6 +8,25 @@
     <title>shopping_cart</title>
 {% endblock %}
 {% block body %}
+
+
+    <script>
+        $(document).ready(function(){
+          $.ajaxSetup({
+            data: {csrfmiddlewaretoken: '{{ csrf_token }}' }
+          });
+          $( "button.delete-button" ).click(function(){
+            var current_button = $(this);
+            $.ajax({
+                url: "/delete/",
+                type: "POST",
+                data: {"item": $(this).attr('id')}
+            });
+           });
+        });
+    </script>
+
+
     <div class="section text-right">
       <div class="container">
         <div class="row">
@@ -58,14 +77,16 @@
                 </tr>
               </thead>
               <tbody>
-              {% for item in items|get_by_index:0 %}
+              {% for item in items %}
                 <tr>
-                  <td >{{ item.id }}</td>
-                  <td> <a href="/product/{{ item.title|format }}"> {{ item.title }}</a> </td>
-                  <td> {{ item.cost }} $</td>
-                  <td contenteditable="true">3</td>
+                  <td >{{ item.product.id }}</td>
+                  <td> <a href="/product/{{ item.product.title|format }}"> {{ item.product.title }}</a> </td>
+                  <td> {{ item.product.cost }} $</td>
+                  <td contenteditable="true">{{ item.quantity }}</td>
                   <td>
-                    <a href="#"><i class="fa fa-3x fa-fw fa-check-square-o"></i></a>
+                      <button id="item{{ item.id }}" class="delete-button">
+                          <i class="fa fa-3x fa-fw fa-check-square-o"></i>
+                      </button>
                   </td>
                 </tr>
                   {% endfor %}

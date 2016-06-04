@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
-from .models import Product, Category
+from .models import Product, Cart, Category, Cart_item, Payment
 from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.contrib.auth import logout
@@ -19,12 +19,30 @@ def home(request):
     else:
         return HttpResponse("<a href='/login/vk-oauth2/'>login with VK</a>")
 
+
+def get_or_creat(request):
+    if not Cart.objects.filter(customer=request.user, paid=False).order_by("date_created"):
+        new_cart = Cart()
+        new_cart.customer = request.user
+        new_cart.invoice = Cart.objects.latest("date_created").invoice + 1
+        new_cart.save()
+
+
+def delete(request):
+    Cart_item.objects.filter(id=int(request.POST.get('item')[4:])).delete()
+    return redirect("/shopping_cart/")
+
+
+def check_out(request):
+    return render(request, "blog/check_out.html", {})
+
+
 @csrf_exempt
 def paypal_success(request):
-     """
-     Tell user we got the payment.
-     """
-     return HttpResponse("Money is mine. Thanks.")
+    cart = Cart.objects.filter(customer=request.user, paid=False).latest('date_created')
+    cart.paid = True
+    cart.save()
+    return HttpResponse("Money is mine. Thanks.")
 
 
 def homefb(request):
@@ -42,6 +60,7 @@ def account_profile(request):
     """
     Show user greetings. ONly for logged in users.
     """
+    get_or_creat(request)
     return redirect("/")
 
 
@@ -58,20 +77,19 @@ def index(request):
 
 def shop(request):
     items = Product.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    categories = Category.objects.all()
-    return render(request, "blog/shop.html", {"items": items, "categories":categories})
+    # categories = Category.objects.all()
+    return render(request, "blog/shop.html", {"items": items})
 
 @login_required
 def shopping_cart(request):
     """
     Page where we ask user to pay with paypal.
     """
+    get_or_creat(request)
     paypal_dict = {
         "business": "chepolina-facilitator@gmail.com",
-        "amount": "100.00",
         "currency_code": "RUB",
         "item_name": "products in socshop",
-        "invoice": "INV-00001",
         "notify_url": reverse('paypal-ipn'),
         "return_url": "http://chepolina.pythonanywhere.com/payment/success/",
         "cancel_return": "http://chepolina.pythonanywhere.com/shopping_cart/",
@@ -79,20 +97,18 @@ def shopping_cart(request):
     }
 
     # Create the instance.
+    cart = Cart.objects.filter(customer=request.user, paid=False).latest("date_created")
+    items = cart.cart_item_set.all()
+    paypal_dict["amount"] = cart.total()
+    paypal_dict["invoice"] = cart.invoice
     form = PayPalPaymentsForm(initial=paypal_dict)
-    items = Product.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    context = {"form": form, "paypal_dict": paypal_dict, "items": items}
+    context = {"form": form, "paypal_dict": paypal_dict, "items": items, "cart": cart}
     return render(request, "blog/shopping_cart.html", context)
 
 
 def gift_card(request):
     return render(request, "blog/gift_card.html", {})
 
-def check_out(request):
-    return render(request, "blog/check_out.html", {})
-
-def add(request):
-    return HttpResponse("Added")
 
 def detail(request, product_title):
     item = get_object_or_404(Product, title__iexact=product_title.replace("-", " "))
@@ -102,3 +118,22 @@ def show_category(request, category):
     items = list(Product.objects.filter(category__name=category.replace("-", " ")))
     categories = Category.objects.all()
     return render(request, 'blog/shop.html', {'items': items, 'categories': categories})
+
+
+@login_required
+def add(request):
+    get_or_creat(request)
+    cart = Cart.objects.filter(customer=request.user,paid=False).latest('date_created')
+    print(request.POST.get('item'))
+    st = request.POST.get('item')
+    prod = Cart_item.objects.filter(product_id=int(request.POST.get('item')[4:]), cart=cart)
+    if prod:
+        prod[0].quantity = prod[0].quantity + 1
+        prod[0].save()
+    else:
+        new_cart_item = Cart_item()
+        new_cart_item.cart=cart
+        new_cart_item.product=Product.objects.filter(id=int(request.POST.get('item')[4:]))[0]
+        new_cart_item.quantity=1
+        new_cart_item.save()
+    return HttpResponse("Added")

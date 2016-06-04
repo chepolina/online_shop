@@ -6,19 +6,18 @@ from django.contrib.auth.models import User
 class Category(models.Model):
     name = models.CharField(max_length=200)
 
-class Payment(models.Model):
-    amount = models.IntegerField()
-    payment_type = models.CharField(max_length=200)
 
 class Cart(models.Model):
-    payment = models.OneToOneField(Payment, on_delete=models.CASCADE, primary_key=False,)
+
     customer = models.ForeignKey("auth.User", default=None)
     date_created = models.DateTimeField(default=timezone.now)
+    paid = models.BooleanField(default=False)
+    invoice = models.IntegerField(default=2)
 
-    def total():
+    def total(self):
         summ = 0
-        for obj in self.Cart_item:
-            summ += obj.cost
+        for obj in self.cart_item_set.all():
+            summ += obj.total()
         return summ
 
 # class Customer(models.Model):
@@ -29,6 +28,11 @@ class Cart(models.Model):
 #     mobile = models.CharField()
 #     payment = models.OneToOneField(Payment, on_delete=models.CASCADE, primary_key=False,)
 
+class Payment(models.Model):
+    amount = models.IntegerField()
+    payment_type = models.CharField(max_length=200)
+    cart = models.OneToOneField(Cart, on_delete=models.CASCADE, primary_key=False, default=None)
+
 
 class Product(models.Model):
     name = models.CharField(max_length=200)
@@ -37,17 +41,18 @@ class Product(models.Model):
     cost = models.IntegerField()
     weight = models.FloatField()
     image = models.ImageField(upload_to="%Y/%m/%d/", height_field=None, width_field=None, max_length=100)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=None)
 
     def publish(self):
         self.published_date = timezone.now()
         self.save()
 
 
-
 class Cart_item(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, primary_key=False,)
-    cost = models.IntegerField()
     quantity = models.IntegerField()
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+
+    def total(self):
+        return self.quantity * self.product.cost
 
