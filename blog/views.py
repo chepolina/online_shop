@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.core.urlresolvers import reverse
 from paypal.standard.forms import PayPalPaymentsForm
+from django.core.cache import cache
 
 
 def home(request):
@@ -76,8 +77,7 @@ def index(request):
     return render(request, "blog/index.html", {})
 
 def shop(request):
-    items = Product.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    # categories = Category.objects.all()
+    items = cache.get_or_set('products', Product.objects.filter(published_date__lte=timezone.now()).order_by('published_date'))
     return render(request, "blog/shop.html", {"items": items})
 
 @login_required
@@ -116,7 +116,7 @@ def detail(request, product_title):
 
 def show_category(request, category):
     items = list(Product.objects.filter(category__name=category.replace("-", " ")))
-    categories = Category.objects.all()
+    categories = cache.get_or_set('categories', Category.objects.all())
     return render(request, 'blog/shop.html', {'items': items, 'categories': categories})
 
 
@@ -124,8 +124,6 @@ def show_category(request, category):
 def add(request):
     get_or_creat(request)
     cart = Cart.objects.filter(customer=request.user,paid=False).latest('date_created')
-    print(request.POST.get('item'))
-    st = request.POST.get('item')
     prod = Cart_item.objects.filter(product_id=int(request.POST.get('item')[4:]), cart=cart)
     if prod:
         prod[0].quantity = prod[0].quantity + 1
