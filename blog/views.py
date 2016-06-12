@@ -22,11 +22,19 @@ def home(request):
 
 
 def get_or_creat(request):
-    if not Cart.objects.filter(customer=request.user, paid=False).order_by("date_created"):
+    if not Cart.objects.all():
+        new_cart = Cart()
+        new_cart.customer = request.user
+        new_cart.invoice = 50
+        new_cart.save()
+    elif not Cart.objects.filter(customer=request.user, paid=False).order_by("date_created"):
         new_cart = Cart()
         new_cart.customer = request.user
         new_cart.invoice = Cart.objects.latest("date_created").invoice + 1
         new_cart.save()
+    else:
+        new_cart = Cart.objects.filter(customer=request.user, paid=False).latest('date_created')
+    return new_cart
 
 
 def delete(request):
@@ -85,7 +93,7 @@ def shopping_cart(request):
     """
     Page where we ask user to pay with paypal.
     """
-    get_or_creat(request)
+    cart = get_or_creat(request)
     paypal_dict = {
         "business": "chepolina-facilitator@gmail.com",
         "currency_code": "RUB",
