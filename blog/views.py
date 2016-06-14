@@ -130,8 +130,7 @@ def show_category(request, category):
 
 @login_required
 def add(request):
-    get_or_creat(request)
-    cart = Cart.objects.filter(customer=request.user,paid=False).latest('date_created')
+    cart = get_or_creat(request)
     prod = Cart_item.objects.filter(product_id=int(request.POST.get('item')[4:]), cart=cart)
     if prod:
         prod[0].quantity = prod[0].quantity + 1
